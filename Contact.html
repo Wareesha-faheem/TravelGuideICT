@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<title>Contact Us</title>
+<style>
+body.contact-page {
+    margin: 0;
+    padding: 0;
+}
+.hero-section {
+    width: 100%;
+    height: 350px;
+    margin: 40px auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/assets/header-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+.hero-section h1 {
+    position: relative;
+    color: #1b0635;
+    font-size: 70px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    z-index: 2;
+}
+.container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 20px auto 40px auto;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+.left-boxes {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 20px;
+}
+.info-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid #0077cc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.info-box h3 {
+    margin: 0 0 10px;
+    color: #0077cc;
+}
+.info-box p {
+    margin: 0;
+    color: #333;
+}
+.form-section {
+    flex: 1.2;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.form-section h2 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #0077cc;
+}
+.form-section p {
+    color: #444;
+    margin-bottom: 20px;
+}
+form label {
+    font-weight: bold;
+    color: #333;
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #f0f8ff;
+    border: 1px solid #0077cc33;
+}
+form textarea {
+    resize: vertical;
+}
+form input[type="checkbox"],
+form input[type="radio"] {
+    margin-right: 8px;
+    margin-top: 10px;
+}
+button[type="submit"] {
+    background: #0077cc;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+form input:focus,
+form select:focus,
+form textarea:focus {
+    background-color: #eeffec;
+    border-color: #1f8814;
+    outline: none;
+    box-shadow: 0 0 5px rgba(79, 255, 79, 0.5);
+}
+.info-box:hover {
+    border-left: 5px solid #2ecc71;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #2ecc71;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background: #1f8814;
+}
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-boxes {
+        position: static;
+        top: 0;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .form-section {
+        width: 100%;
+    }
+}
+</style>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="contact-page">
+<nav>
+    <div class="nav__header">
+        <div class="nav__logo">
+            <a href="#" class="logo"><img src="/assets/Logo.png" alt=""></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+        </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+        <li><a href="/Index.html">HOME</a></li>
+        <li><a href="/Index.html#about">ABOUT US</a></li>
+        <li><a href="/Destinations.html">DESTINATIONS</a></li>
+        <li><a href="/Index.html#client__container">TESTIMONIALS</a></li>
+        <li><a href="/Contact.html">CONTACT US</a></li>
+    </ul>
+    <div class="nav__btns">
+        <button class="btn" onclick="window.location.href='http://127.0.0.1:3000/contact.html'">CONTACT US</button>
+    </div>
+</nav>
+
+<header class="hero-section">
+    <h1>Contact Us</h1>
+    <p>Have questions or need travel information?<br>Send us a message!</p>
+</header>
+
+<div class="container">
+    <div class="left-boxes">
+        <div class="info-box"> 
+            <h3>Call Us at:</h3>
+            <p>+92 321 1234567</p>
+        </div>
+        <div class="info-box"> 
+            <h3>Reach us via Mail:</h3>
+            <p>project@nu.edu.pk</p>
+        </div>
+        <div class="info-box"> 
+            <h3>Address</h3>
+            <p>FAST NUCES, Karachi Campus</p>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+            <label for="phone">Phone Number:</label>
+            <input type="number" id="phone" name="phone" placeholder="Enter your phone number"><br><br>
+            <label for="inquiry">Inquiry Type:</label><br>
+            <select id="inquiry" name="inquiry" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="booking">Booking Inquiry</option>
+                <option value="destination_info">Destination Information</option>
+                <option value="package">Package</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+            </select><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea><br><br>
+            <label>Travel Type:</label><br>
+            <input type="checkbox" name="travel_type" value="adventure"> Adventure<br>
+            <input type="checkbox" name="travel_type" value="family"> Family Trip<br>
+            <input type="checkbox" name="travel_type" value="solo"> Solo Travel<br>
+            <input type="checkbox" name="travel_type" value="historical"> Historical / Cultural<br>
+            <input type="checkbox" name="travel_type" value="nature"> Nature / Mountains<br><br>
+            <label for="month">Preferred Travel Month:</label><br>
+            <select id="month" name="travel_month">
+                <option disabled selected>Select month</option>
+                <option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+            </select><br><br>
+            <label for="contactmethod">Preferred Contact Method:</label><br>
+            <select id="contactmethod" name="contactmethod" required>
+                <option value="" disabled selected>Select one</option>
+                <option value="instagram">Instagram</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="whatsapp">Whatsapp</option>
+            </select><br><br>
+            <label>How did you hear about us?</label><br>
+            <input type="checkbox" name="hear" value="instagram"> Instagram<br>
+            <input type="checkbox" name="hear" value="facebook"> Facebook<br>
+            <input type="checkbox" name="hear" value="google"> Google Search<br>
+            <input type="checkbox" name="hear" value="friends"> Friends / Family<br>
+            <input type="checkbox" name="hear" value="other"> Other<br><br>
+            <label>Rate Us:</label><br>
+            <input type="radio" name="rating" value="1"> ★
+            <input type="radio" name="rating" value="2"> ★★
+            <input type="radio" name="rating" value="3"> ★★★
+            <input type="radio" name="rating" value="4"> ★★★★
+            <input type="radio" name="rating" value="5"> ★★★★★<br><br>
+            <input type="checkbox" required> I agree with Terms & Privacy Policy<br><br>
+            <button type="submit" onclick="submitform()">Submit</button>
+            <script src="script.js"></script>
+        </form>
+    </div>
+</div>
+
+<footer id="contact">
+    <div class="section__container footer__container">
+        <div class="footer__col">
+            <div class="footer__logo">
+                <a href="#" class="logo">Travel Guide</a>
+            </div>
+            <p>Explore the world with ease and excitement through our comprehensive travel platform. Your journey begins here, where seamless planning meets unforgettable experiences.</p>
+        </div>
+        <div class="footer__col">
+            <h4>Quick Links</h4>
+            <ul class="footer__links">
+                <li><a href="/Index.html">Home</a></li>
+                <li><a href="/Index.html#about">About</a></li>
+                <li><a href="/Destinations.html">Destinations</a></li>
+                <li><a href="/Contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4>Contact Us</h4>
+            <ul class="footer__links">
+                <li><a href="#"><span><i class="ri-phone-fill"></i></span> +92 321-1234567</a></li>
+                <li><a href="#"><span><i class="ri-record-mail-line"></i></span> project@nu.edu.pk</a></li>
+                <li><a href="#"><span><i class="ri-map-pin-2-fill"></i></span> FAST NUCES, Karachi</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4>Visit our Socials</h4>
+            <ul class="footer__socials">
+                <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+                <li><a href="#"><i class="ri-youtube-line"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer__bar">Copyright © 2025 ICT Lab Project. All rights reserved.</div>
+</footer>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

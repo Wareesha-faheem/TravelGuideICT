@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destinations</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papn8fQp4pD5hx5VZsE5Y8Fq3VpIwVx6p8qD1r5S/7KX+n+E+HE/ldxMz9Vt1XG1H7D6eC2rR81uXlDlNJGv2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            font-family: "DM Sans", sans-serif;
+        }
+        .banner {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(/assets/header-bg.jpeg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(90, 40, 160, 0.45);
+            backdrop-filter: blur(1px);
+        }
+        .banner h1 {
+            position: relative;
+            color: white;
+            font-size: 48px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+        .search-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        #searchInput {
+            width: 50%;
+            padding: 14px 20px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            background: white;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+        .grid {
+            width: 90%;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card h3 {
+            margin: 15px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #4b2a82;
+        }
+        .hero-section {
+            width: 100%;
+            height: 350px;
+            margin: 40px auto;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("sky background.jpg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section h1 {
+            position: relative;
+            color: #1b0635;
+            font-size: 70px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+        .search-wrapper {
+            position: relative;
+            width: 50%;
+        }
+        .search-wrapper input {
+            width: 100%;
+            padding: 14px 45px 14px 20px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            background: white;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+        .search-wrapper .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: gray;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="#" class="logo"><img src="/assets/Logo.png" alt=""></a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="/Index.html">HOME</a></li>
+            <li><a href="/Index.html#about">ABOUT US</a></li>
+            <li><a href="/Destinations.html">DESTINATIONS</a></li>
+            <li><a href="/Index.html#client__container">TESTIMONIALS</a></li>
+            <li><a href="/Contact.html">CONTACT US</a></li>
+        </ul>
+        <div class="nav__btns">
+            <button class="btn" onclick="window.location.href='http://127.0.0.1:3000/contact.html'">CONTACT US</button>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1>Destinations</h1>
+    </header>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Search destinations..." onkeyup="searchDestinations()">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+
+    <div class="search-container" style="margin-top:10px;">
+        <select id="ratingSort" onchange="sortByRating()" style="padding:10px 15px; border-radius:15px; border:none; box-shadow:0 4px 14px rgba(0,0,0,0.1); font-size:16px;">
+            <option value="all">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars (4 - 4.9)</option>
+            <option value="3">3 Stars (3 - 3.9)</option>
+            <option value="2">2 Stars (2 - 2.9)</option>
+            <option value="1">1 Star (1 - 1.9)</option>
+        </select>
+    </div>
+
+    <section class="section__container destination__container">
+        <div class="destination__grid" id="allDestinations">
+            <div class="destination__card card" data-rating="4.8">
+                <img src="assets/pk-hunza.jpg">
+                <div class="destination__card__details">
+                    <div><h4>Valley of Peace</h4><p>Hunza Valley, Gilgit Baltistan</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 4.8</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="4.5">
+                <img src="assets/pk-skardu.jpg">
+                <div class="destination__card__details">
+                    <div><h4>Heaven on Earth</h4><p>Skardu, Gilgit Baltistan</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 4.5</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="4.9">
+                <img src="assets/pk-kaghan.jpg">
+                <div class="destination__card__details">
+                    <div><h4>Land of Lakes</h4><p>Naran & Kaghan Valley, KPK</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 4.9</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="4.0">
+                <img src="assets/pk-murree.webp">
+                <div class="destination__card__details">
+                    <div><h4>The Queen of Hills</h4><p>Murree, Punjab</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 4.0</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="3.8">
+                <img src="assets/pk-karachi.jpg">
+                <div class="destination__card__details">
+                    <div><h4>City of Lights</h4><p>Karachi, Sindh</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 3.8</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="4.6">
+                <img src="assets/pk-swat.webp">
+                <div class="destination__card__details">
+                    <div><h4>Switzerland of Asia</h4><p>Swat Valley, KPK</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 4.6</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="2.9">
+                <img src="assets/pk-lahore.jpg">
+                <div class="destination__card__details">
+                    <div><h4>The Heart of Pakistan</h4><p>Lahore, Punjab</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 2.9</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="5.0">
+                <img src="assets/pk-fairymeadows.jpg">
+                <div class="destination__card__details">
+                    <div><h4>Base of Killer Mountain</h4><p>Fairy Meadows, GB</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 5.0</div>
+                </div>
+            </div>
+            <div class="destination__card card" data-rating="1.9">
+                <img src="assets/pk-gawadar.webp">
+                <div class="destination__card__details">
+                    <div><h4>Golden Beaches</h4><p>Gwadar, Balochistan</p></div>
+                    <div class="destination__rating"><i class="ri-star-fill"></i> 1.9</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <div class="footer__logo">
+                    <a href="#" class="logo">Travel Guide</a>
+                </div>
+                <p>
+                    Explore the world with ease and excitement through our comprehensive travel platform. Your journey begins here, where seamless planning meets unforgettable experiences.
+                </p>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul class="footer__links">
+                    <li><a href="/Index.html">Home</a></li>
+                    <li><a href="/Index.html#about">About</a></li>
+                    <li><a href="/Destinations.html">Destinations</a></li>
+                    <li><a href="/Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Contact Us</h4>
+                <ul class="footer__links">
+                    <li><a href="#"><span><i class="ri-phone-fill"></i></span> +92 321-1234567</a></li>
+                    <li><a href="#"><span><i class="ri-record-mail-line"></i></span> project@nu.edu.pk</a></li>
+                    <li><a href="#"><span><i class="ri-map-pin-2-fill"></i></span> FAST NUCES, Karachi</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Visit our Socials</h4>
+                <ul class="footer__socials">
+                    <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                    <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+                    <li><a href="#"><i class="ri-youtube-line"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bar">Copyright © 2025 ICT Lab Project. All rights reserved.</div>
+    </footer>
+
+    <script>
+        function applyFilters() {
+            const input = document.getElementById("searchInput").value.trim().toLowerCase();
+            const ratingFilter = document.getElementById("ratingSort").value;
+            const cards = document.querySelectorAll(".destination__card");
+
+            cards.forEach(card => {
+                const title = card.querySelector("h4").innerText.toLowerCase();
+                const location = card.querySelector("p").innerText.toLowerCase();
+                const totalText = title + " " + location;
+                const rating = parseFloat(card.getAttribute("data-rating"));
+
+                let matchesSearch = totalText.includes(input);
+                let matchesRating = true;
+
+                if (ratingFilter !== "all") {
+                    const r = parseInt(ratingFilter);
+                    if (r === 5) matchesRating = (rating === 5);
+                    else if (r === 4) matchesRating = (rating >= 4 && rating < 5);
+                    else if (r === 3) matchesRating = (rating >= 3 && rating < 4);
+                    else if (r === 2) matchesRating = (rating >= 2 && rating < 3);
+                    else if (r === 1) matchesRating = (rating >= 1 && rating < 2);
+                }
+
+                card.style.display = (matchesSearch && matchesRating) ? "" : "none";
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("searchInput").addEventListener("input", applyFilters);
+            document.getElementById("ratingSort").addEventListener("change", applyFilters);
+        });
+    </script>
+</body>
+</html>
